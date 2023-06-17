@@ -68,4 +68,4 @@ if __name__ == "__main__":
         + parish_tax(parish_tax_rate, room_charge)
         + city_tax(city_tax_rate, room_charge)
     )
-    print(f"Total Day Charge: ${total_day_charge!s}\n")
+    print(f"Total Day Charge: ${total_day_charge:.2f}\n")

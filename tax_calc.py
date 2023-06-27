@@ -7,6 +7,8 @@ class HotelRoomStay:
 
     def __init__(self, room_charge: float):
         """Initializes with the given room charge."""
+        if room_charge < 0:
+            raise ValueError("Room charge cannot be negative.")
         self.room_charge = room_charge
 
     def calculate_tax(self, tax_rate: float) -> float:
@@ -54,7 +56,9 @@ if __name__ == "__main__":
     for night in range(1, number_of_nights + 1):
         while True:
             try:
-                room_rate: float = float(input(f"Enter the room rate for night {night}: "))
+                room_rate: float = float(
+                    input(f"Enter the room rate for night {night}: ")
+                )
                 if room_rate < 0:
                     raise ValueError
                 break

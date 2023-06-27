@@ -1,45 +1,29 @@
-# Louisiana Hotel Tax Calculator
+# Hotel Stay Tax Calculator
 
-This Python script calculates the total daily charge for a hotel room in Louisiana, USA, by adding the room charge to the state, parish, and city taxes.
+This program calculates the tax for each night stay in a hotel based on room rates, state tax, parish tax, and city tax. The users are asked to enter the number of nights for the stay, and the room rate for each night. The program then calculates the tax for each type (state, parish, and city) and gives a summary for each night and a total for the entire stay.
 
-## Code Overview
+## Code
 
-The script contains three functions, each calculating a different tax:
+The code consists of two classes: `HotelRoomStay` and `NightStay`. The `HotelRoomStay` class is responsible for calculating the different types of taxes and the subtotal for each night. The `NightStay` class, which inherits from `HotelRoomStay`, is used to create instances for each night's stay.
 
-1. `state_tax(state_tax_rate: float, room_charge: float) -> float`: This function calculates the amount of State Tax charged to the hotel room. The State Tax rate is always 4.45%.
+A brief summary of the methods in `HotelRoomStay`:
 
-2. `parish_tax(parish_tax_rate: float, room_charge: float) -> float`: This function calculates the amount of Parish Tax charged to the hotel room. The Parish Tax rate is always 5.5%.
+- `calculate_tax(self, tax_rate: float) -> float:`: Generic method to calculate tax.
+- `state_tax(self) -> float:`: Calculates state tax.
+- `parish_tax(self) -> float:`: Calculates parish tax.
+- `city_tax(self) -> float:`: Calculates city tax.
+- `subtotal(self) -> float:`: Calculates subtotal for the night.
 
-3. `city_tax(city_tax_rate: float, room_charge: float) -> float`: This function calculates the amount of City Tax charged to the hotel room. The City Tax rate is always 3.0%.
+In the main part of the code, the user is prompted to enter the number of nights for the stay and the room rate for each night. The program then calculates the tax and subtotal for each night, and finally the total charge for the entire stay.
 
-The script also contains a main section that prints out the room charge, each of the taxes, and the total daily charge.
+## Tests
+
+The `pytest` framework is used to test the classes and methods. Each test function tests a specific method in the `HotelRoomStay` class or a specific scenario (such as zero or negative room charge).
 
 ## Usage
 
-You can run the script directly from the command line:
+To run the program, execute the main Python file in your terminal. To run the tests, execute the test Python file in your terminal using `pytest`.
 
-```bash
-python3 tax_calculator.py
-```
+## Future improvements
 
-The output will look something like this:
-
-```
-Room Charge: $192.00
-State Tax: %4.45 ($8.54)
-Parish Tax: %5.5 ($10.56)
-City Tax: %3.0 ($5.76)
-Total Day Charge: $216.86
-```
-
-## Customization
-
-You can customize the room charge by modifying the `room_charge` variable at the top of the script. The tax rates are constants and should not be changed unless the tax rates in Louisiana change.
-
-## Dependencies
-
-This script requires Python 3.6 or later. No external libraries are needed.
-
-## License
-
-This project is licensed under the terms of the MIT license.
+The current program assumes a specific tax rate for state, parish, and city. A possible improvement would be to allow these rates to be changed, or to allow different rates for different hotels or locations. Also, the user input validation could be improved to handle more edge cases and invalid inputs.
